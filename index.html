@@ -12,11 +12,17 @@
 
 <div>
   <h4 style="text-align: center"> <strong>Homogeneous Volume Rendering for Subsurface Scattering</strong></h4>
-  <p>For our project we plant to implement subsurface scattering for homogeneous volumes. In order to do so, we will
+  <p>For our project we plan to implement subsurface scattering for homogeneous volumes. In order to do so, we will
   build on our current path tracer implementation to support ray transmission using a BTDF component. At each intersection,
 we now have the probability of generating either a reflected ray or a refracted ray. We will use multiple importance sampling in
 order to decide whether the BTDF or BRDF should be sampled. Additionally, we will take into consideration the effects of scattering
-and absorption along each ray.</p>
+and absorption along each ray. In order to display the effects of subsurface scattering, we will be rendering a ball of wax with one
+light source in the background. Here are photos below displaying the rendering with and without subsurface scattering.</p>
+</div>
+
+<div>
+  <p>With Subsurface Scattering</p>
+  <p style="text-align: right">Without Subsurface Scattering</p>
 </div>
 
 </body>
