@@ -12,12 +12,20 @@
 
 <div>
   <h4 style="text-align: center"> <strong>Homogeneous Volume Rendering for Subsurface Scattering</strong></h4>
-  <p>For our project we plan to implement subsurface scattering for homogeneous volumes. In order to do so, we will
-  build on our current path tracer implementation to support ray transmission using a BTDF component. At each intersection,
-we now have the probability of generating either a reflected ray or a refracted ray. We will use multiple importance sampling in
-order to decide whether the BTDF or BRDF should be sampled. Additionally, we will take into consideration the effects of scattering
-and absorption along each ray. In order to display the effects of subsurface scattering, we will be rendering a ball of wax with one
-light source in the background. Here are photos below displaying the rendering with and without subsurface scattering.</p>
+  <p>For our project we plan to implement subsurface scattering through volumetric path tracing through a homogeneous volume. 
+    As such, our project will be an extension of the path tracer to handle these new features. If there is time, then the path 
+    tracer will be used to create a rendered image worthy for submission into a rendering competition. As volumetric rendering 
+    requires entering tracing light rays through different media, transmission and full support for a GGX BSDF are necessary. 
+    Our BSDF implementation will follow the guidelines presented by the original GGX paper and will consist of our existing GGX 
+    BRDF implementation, which we have been using for past homeworks, as well as a GGX BTDF implementation which we have written 
+    specifically for this project. At each intersection, we will use the Fresnel term to probabilistically decide whether or not 
+    we should sample according to the BRDF or BTDF. This will prevent our path tracer from growing at an exponential rate as otherwise 
+    we would be shooting two rays at each intersection, one for reflection and one for refraction. With the addition of the BTDF we 
+    will have effectively handled ray transmission and ray reflection thereby implementing a GGX BSDF. Additionally we will model subsurface 
+    scattering interactions by using volumetric rendering techniques whenever we enter an object. As a test image, we will be rendering a 
+    ball of wax with one light source in the background. Here are photos below displaying our progress so far:
+
+    </p>
 </div>
 
 <div>
