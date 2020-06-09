@@ -38,6 +38,19 @@
   <img src="btdf_dragon.PNG" alt="Dragon BTDF">
   <img src="btdf_cornell.PNG" alt="Cornell BTDF">
   <img src="btdf_mis.PNG" alt="MIS BTDF">
+  
+   <h5> <strong>Implementing Volumetric Rendering</strong></h5>
+   <p> The second step to implementing our BSDF was to implement the aspects of volumetric rendering outlined in the SIGGRAPH course
+    paper. We define absorption and scattering coefficients in our tester file and sum those together in order to get our extinction
+     coefficient. This extinction coefficient is used to calculate transmittance, representing the overall loss of radiance, as we 
+     travel through the medium. Transmittance is multiplied into our throughput at each intersection with free distance t being
+     passed in as a parameter. Rather than estimating all contributions due to scattering and emission at each point while stepping 
+     through a medium, we use Russian Roulette in order to choose which event to sample. The material's emission values are defined in
+     the tester file and we return this value when encountering an emission event. In the case of a scattering event, we use an isotropic
+     phase function in order to sample the uniform sphere and generate a random direction to scatter in. This scattering event represents
+     the in-scattering property as the out-scattering property has been dealt with in transmittance. With these features, we have
+     implemented all four aspects of volumetric rendering (absorption, emission, in-scattering, out-scattering).
+  </p>
 </div>
   
  
