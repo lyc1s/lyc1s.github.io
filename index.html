@@ -11,22 +11,34 @@
 </div>
 
 <div>
-  <h4 style="text-align: center"> <strong>Homogeneous Volume Rendering for Subsurface Scattering</strong></h4>
+  <h4 style="text-align: center"> <strong>Proposal: Homogeneous Volume Rendering for Subsurface Scattering</strong></h4>
   <p>For our project we plan to implement subsurface scattering through volumetric path tracing through a homogeneous volume. 
     As such, our project will be an extension of the path tracer to handle these new features. If there is time, then the path 
     tracer will be used to create a rendered image worthy for submission into a rendering competition. As volumetric rendering 
-    requires entering tracing light rays through different media, transmission and full support for a GGX BSDF are necessary. 
+    requires entering tracing light rays through different media, transmission and full support for a BSDF are necessary. 
     Our BSDF implementation will follow the guidelines presented by the original GGX paper and will consist of our existing GGX 
-    BRDF implementation, which we have been using for past homeworks, as well as a GGX BTDF implementation which we have written 
+    BRDF implementation, which we have been using for past homeworks, as well as an ideal BTDF implementation which we have written 
     specifically for this project. At each intersection, we will use the Fresnel term to probabilistically decide whether or not 
     we should sample according to the BRDF or BTDF. This will prevent our path tracer from growing at an exponential rate as otherwise 
     we would be shooting two rays at each intersection, one for reflection and one for refraction. With the addition of the BTDF we 
-    will have effectively handled ray transmission and ray reflection thereby implementing a GGX BSDF. Additionally we will model subsurface 
-    scattering interactions by using volumetric rendering techniques whenever we enter an object. As a test image, we will be rendering a 
-    ball of wax with one light source in the background. Here are photos below displaying our progress so far:
-
+    will have effectively handled ray transmission and ray reflection thereby implementing a BSDF. Additionally we will model subsurface 
+    scattering interactions by using volumetric rendering techniques whenever we enter an object. For these techniques we are following
+    the closed tracking outline provided by the SIGGRAPH 2017 Course paper. We have rendered a variety of test
+    images to show both our progress and final implementation.
     </p>
+  
+  <h5> <strong>Implementing the BTDF</strong></h5>
+  <p> The first step in implementing our BSDF was to implement ray transmission through a material such as glass. In order to do this, 
+    we implemented a BTDF using ideal refraction in order to generate our refracted ray. For our scenes we defined materials as either
+    transmissive or non-transmissive, with all transmissive materials subject to both refraction and reflection. This
+    is opposed non-transmissive materials which only handled surface reflection. We used the Fresnel reflection coefficient to decide
+    between refraction and reflection at each intersection on a transmissive material. Our BTDF implemenation test images are displayed 
+    below:
+  </p>
+  
 </div>
+  
+ 
 
 <div>
   
