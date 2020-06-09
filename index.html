@@ -33,7 +33,7 @@
     transmissive or non-transmissive, with all transmissive materials subject to both refraction and reflection. This
     is opposed non-transmissive materials which only handled surface reflection. We used the Fresnel reflection coefficient to decide
     between refraction and reflection at each intersection on a transmissive material. Direct lighting for transmissive materials is
-    handled using both the ggxBTDF and ggxBRDF at each boundary. In both cases we generate a sample and test to see if it hits any
+    handled using either the GGX BTDF or GGX BRDF at each boundary depending on if the ray refracts or reflects. In both cases we generate a sample and test to see if it hits any
     of the lights within the scene. If the sample intersects with the light and is not occuluded, we use the respective BTDF or BRDF
     in order to add radiance due to direct lighting. Our BTDF implemenation test images are displayed 
     below:
