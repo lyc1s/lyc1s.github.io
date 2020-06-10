@@ -39,8 +39,12 @@
   </p>
   
   <p>Here is the Stanford Dragon with a transmissive material very similar to glass. We defined the indices of refraction for the
-  dragon and the surrounding medium in the tester file. In this scene we use n=1.445 and n=1.00029 to represent glass and air. The
-  default dragon rendering using only a BRDF is also included for reference. </p>
+  dragon and the surrounding medium in the tester file. In this scene we use n=1.445 and n=1.00029 to represent glass and air. Notice 
+  that the first dragon is rendered with direct light due to refraction and the second dragon is rendered without direct light due
+    to refraction. The dragon without direct light has much stronger shadows due to total internal reflection compared to the direct light
+    dragon which has much lighter shadows due to the direct lighting that it receives. The default dragon rendering using only a BRDF 
+    is also included for reference. </p>
+  <img src="btdf_dragon_directlight.PNG" alt="Dragon BTDF">
   <img src="btdf_dragon.PNG" alt="Dragon BTDF">
   <img src="brdf_dragon.PNG" alt="Dragon BRDF">
   
