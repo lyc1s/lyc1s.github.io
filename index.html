@@ -77,10 +77,21 @@
      its respective probability density function). Example scenes are given below.
   </p>
 </div>
+  <p>Here are two photos of the Stanford dragon using the Henyey-Greenstein phase function with g = -1 and g = 1 to represent backwards 
+    and forwards scattering. The dragon with
+  backwards scattering has a light more light which reaches the camera. The absorption coefficient is 0.1 and the scattering 
+  coefficient is 0.9 for both renderings. </p>
   
+  <img src="btdf_dragon_scattering_back.PNG" alt="Backwards Scattering">
+  <img src="btdf_dragon_scattering_forward.PNG" alt="Forwards Scattering">
  
-
-<div>
+  <p>These three photos of the Stanford dragon all use the isotropic phase function and have equal chance of scattering and absorption.
+    The absorption and scattering coefficients are both 0.1, 0.3, and 0.5 for each photo respectively. As both coefficients increase you
+    can see that the dragon gets progressively more opaque to reflect the fact that more light is being scattered or absorbed meaning less 
+    light ends up transmitting through the medium. These photos also show the effects of the isotropic phase function as the scattering within 
+    the medium with the speckles on the draogn representing pixels where scattering events occurred. Since the isotropic phase function 
+    randomly selects a direction, there is a random chance that we will pick up radiance from some other surface resulting in these 
+    lighter speckles within the dragon.</p>
   
   <p>Default Scene</p>
   <img src="default_scene.PNG" alt="Default Scene">
@@ -91,15 +102,41 @@
 
   <img src="dragon_backward.PNG" alt="Dragon Backward Scattering">
   <img src="dragon_forward.PNG" alt="Dragon Forward Scattering">
+
+  <img src="btdf_dragon_equal_0_1.PNG" alt="coefficients equal 0.1">
+  <img src="btdf_dragon_equal_0_3.PNG" alt="coefficients equal 0.3">
+  <img src="btdf_dragon_equal_0_5.PNG" alt="coefficients equal 0.5">
+  
+   <p>We also wanted to create some renderings where the surrounding medium wasn't air. These photos show the dragon scene
+  but with only lights shining on the dragon from the back. The first photo uses a slightly denser than air surrounding medium to 
+   represent a kind of fog and the second photo is with air as the surrounding medium. </p>
+  
+  <img src="btdf_dragon_fog.PNG" alt="Fog">
+  <img src="btdf_dragon_no_fog.PNG" alt="No Fog"
   
 
 </div>
 
+
 <div>
-<h4><strong>Discussion</strong></h5>
+<h4><strong>Discussion</strong></h4>
 <p>
   TODO
 </p>
 </div>
+  
+<div>
+<h4><strong>Source Citations</strong></h4>
+<p>
+  Fong, Julian, et al. “Production Volume Rendering SIGGRAPH 2017 Course.” Graphics.pixar.com, Pixar, 2017, graphics.pixar.com/library/ProductionVolumeRendering/paper.pdf.
+</p>
+<p>
+  Pharr, Matt, et al. Physically Based Rendering: from Theory to Implementation. Morgan Kaufmann Publishers/Elsevier, 2017.
+</p>
+<p>
+  Walter, Bruce, et al. “Microfacet Models for Refraction through Rough Surfaces.” Cs.cornell.edu, Cornell University, 2007, www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf.
+</p>
+</div>
+  
 </body>
 </html>
