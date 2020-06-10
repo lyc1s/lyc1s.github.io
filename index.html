@@ -100,9 +100,6 @@
   <p>BTDF with Attenuation</p>
   <img src="btdf_implementation_attenuation.PNG" alt="BTDF Attenuation">
 
-  <img src="dragon_backward.PNG" alt="Dragon Backward Scattering">
-  <img src="dragon_forward.PNG" alt="Dragon Forward Scattering">
-
   <img src="btdf_dragon_equal_0_1.PNG" alt="coefficients equal 0.1">
   <img src="btdf_dragon_equal_0_3.PNG" alt="coefficients equal 0.3">
   <img src="btdf_dragon_equal_0_5.PNG" alt="coefficients equal 0.5">
@@ -121,7 +118,20 @@
 <div>
 <h4><strong>Discussion</strong></h4>
 <p>
-  TODO
+  One drawback of our implementation is the use of an ideal refraction BTDF, which means that the incoming light direction sampled
+  at each intersection is necessarily unique with respect to the intersection normal and output direction. This limits our ability
+  to implement better direct lighting techniques such as multiple importance sampling. This restriction also results in more noise
+  as the sampled incident light direction pointing towards the light must follow Fresnel's Law with respect to the object intersection's
+  macrosurface normal and outgoing radiance direction, which may not be valid. A true GGX/Beckmann BTDF implementation does not have this 
+  restriction and would alleviate this issue.
+</p>
+
+<p>
+  One other issue unrelated to subsurface scattering is the issue of inaccurate/noisy areas of shadowing. This is expected as 
+  light does reach the shadowed areas of transmissive objects due to transmission, yet a simple shadow ray test would fail to 
+  reach accurate results due to the effects of ray refraction between differing surfaces. This also means that our path tracer 
+  is ill equipped to represent strong lights from caustics. Photon mapping may fix this issue in the future.
+
 </p>
 </div>
   
