@@ -71,10 +71,11 @@
      travel through the medium. Transmittance is multiplied into our throughput at each intersection with free distance t being
      passed in as a parameter. Rather than estimating all contributions due to scattering and emission at each point while stepping 
      through a medium, we use Russian Roulette in order to choose which event to sample. The material's emission values are defined in
-     the tester file and we return this value when encountering an emission event. In the case of a scattering event, we use an isotropic
-     phase function in order to sample the uniform sphere and generate a random direction to scatter in. This scattering event represents
-     the in-scattering property as the out-scattering property has been dealt with in transmittance. With these features, we have
-     implemented all four aspects of volumetric rendering (absorption, emission, in-scattering, out-scattering).
+     the tester file and we return this value when encountering an emission event. In the case of a scattering event, we use either an
+     isotropic or Henyey-Greenstrein phase function to generate a direction to scatter in. The options for which phase function to specify
+     as well as the g value which controls forward scattering versus back scattering are all read in from our tester file. This scattering 
+     event represents the in-scattering property as the out-scattering property has been dealt with in transmittance. With these features, 
+     we have implemented all four aspects of volumetric rendering (absorption, emission, in-scattering, out-scattering).
   </p>
 </div>
   
