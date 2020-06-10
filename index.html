@@ -39,15 +39,20 @@
   </p>
   
   <p>Here is the Stanford Dragon with a transmissive material very similar to glass. We defined the indices of refraction for the
-  dragon and the surrounding medium in the tester file. In this scene we use n=1.445 and n=1.00029 to represent glass and air. The
-  default dragon rendering using only a BRDF is also included for reference. </p>
+  dragon and the surrounding medium in the tester file. In this scene we use n=1.445 and n=1.00029 to represent glass and air. Notice 
+  that the first dragon is rendered with direct light due to refraction and the second dragon is rendered without direct light due
+    to refraction. The dragon without direct light has much stronger shadows due to total internal reflection compared to the direct light
+    dragon which has much lighter shadows due to the direct lighting that it receives. The default dragon rendering using only a BRDF 
+    is also included for reference. </p>
+  <img src="btdf_dragon_directlight.PNG" alt="Dragon BTDF Direct Light">
   <img src="btdf_dragon.PNG" alt="Dragon BTDF">
   <img src="brdf_dragon.PNG" alt="Dragon BRDF">
   
-  <p>This is a Cornell Box scene we created with a single cube inside. You can see the differences between the rendering where
-    the cube is transmissive versus simply reflective. For the non-transmissive cube, you can see the light of the walls being 
-    reflected at the base of the cube. This is opposed to the transmissive cube, which transmits nearly all light and does not
-    have the reflected color at the base. </p>
+  <p>This is a Cornell Box scene we created with a single completely specular cube inside. The rendering of the cube with transmission
+    resembles a perfectly clear window whereas the cube without transmission rerpresents a perfectly clear mirror. Besides the images
+    produced on the faces of the cube being different, you can also see the difference in color at the base of the cubes. For the 
+    non-transmissive cube, you can see the red and green light of the colored walls being reflected at the base. This is opposed to the 
+    transmissive cube, which transmits nearly all light and does not have the reflected color at the base. </p>
   <img src="btdf_cornell.PNG" alt="Cornell BTDF">
   <img src="brdf_cornell.PNG" alt="Cornell BRDF">
   
@@ -61,7 +66,7 @@
   
    <h4> <strong>Implementing Volumetric Rendering</strong></h5>
    <p> The second step to implementing our BSDF was to implement a closed-path tracking solution to the volume rendering equation
-     with reference from <em>Production Volume Rendering SIGGRAPH 2017 Course</em>. We limit our implementation to homogeneous
+     with reference from <em>Production Volume Rendering SIGGRAPH 2017 Course</em> by Fong <em>et al</em>. We limit our implementation to homogeneous
      volumes, allowing us to use a normalized version of the Beer-Lambert law as a free-flight estimator.
      At each intersection we apply a Russian Roulette based approach where we probabilistically sample
      between an emission event and an in-scattering based event. To deal with out-scattering and 
@@ -86,7 +91,7 @@
 </div>
 
 <div>
-<h5><strong>Discussion</strong></h5>
+<h4><strong>Discussion</strong></h5>
 <p>
   TODO
 </p>
