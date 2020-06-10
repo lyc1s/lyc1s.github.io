@@ -80,7 +80,9 @@
 </div>
   <p>Here are two photos of the Stanford dragon using the Henyey-Greenstein phase function with g = -1 and g = 1 to represent backwards 
     and forwards scattering. The dragon with
-  backwards scattering has a light more light which reaches the camera. The absorption coefficient is 0.1 and the scattering 
+  backwards scattering has less light reaching the camera while the opposite is true for forward scattering. One can assume that
+  a forward scattering phase function acts the most like clear glass as the rays tend not to change direction as they are scattered.
+  The absorption coefficient is 0.1 and the scattering 
   coefficient is 0.9 for both renderings. </p>
   
   <img src="btdf_dragon_scattering_back.PNG" alt="Backwards Scattering">
@@ -88,9 +90,9 @@
  
   <p>These three photos of the Stanford dragon all use the isotropic phase function and have equal chance of scattering and absorption.
     The absorption and scattering coefficients are both 0.1, 0.3, and 0.5 for each photo respectively. As both coefficients increase you
-    can see that the dragon gets progressively more opaque to reflect the fact that more light is being scattered or absorbed meaning less 
+    can see that the dragon gets progressively more opaque to reflect the fact that more light is being scattered or absorbed as it travels through the
     light ends up transmitting through the medium. These photos also show the effects of the isotropic phase function as the scattering within 
-    the medium with the speckles on the draogn representing pixels where scattering events occurred. Since the isotropic phase function 
+    the medium with the speckles on the dragon representing pixels where more in-scattering events occurred. Since the isotropic phase function 
     randomly selects a direction, there is a random chance that we will pick up radiance from some other surface resulting in these 
     lighter speckles within the dragon.</p>
 
@@ -124,7 +126,7 @@
   to implement better direct lighting techniques such as multiple importance sampling. This restriction also results in more noise
   as the sampled incident light direction pointing towards the light must follow Fresnel's Law with respect to the object intersection's
   macrosurface normal and outgoing radiance direction, which may not be valid. A true GGX/Beckmann BTDF implementation does not have this 
-  restriction and would alleviate this issue.
+  restriction and would alleviate this issue, in addition to a less-glasslike appearance to the objects rendered.
 </p>
 
 <p>
