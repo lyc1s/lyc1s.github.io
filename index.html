@@ -27,13 +27,13 @@
     images to show both our progress and final implementation.
     </p>
   
-  <h5> <strong>Implementing the BTDF</strong></h5>
-  <p> The first step in implementing our BSDF was to implement ray transmission through a material such as glass. In order to do this, 
-    we implemented a BTDF using ideal refraction in order to generate our refracted ray. For our scenes we defined materials as either
+  <h4> <strong>Implementing the BTDF</strong></h5>
+  <p> The first step in implementing our BSDF was to implement ray transmission through a material. To achieve this, 
+    we implemented an ideal refraction BTDF in order to generate our refracted ray. For our scenes we defined materials as either
     transmissive or non-transmissive, with all transmissive materials subject to both refraction and reflection. This
-    is opposed non-transmissive materials which only handled surface reflection. We used the Fresnel reflection coefficient to decide
+    is opposed non-transmissive materials which only handled surface reflection. We used the Fresnel reflection coefficient for unpolarized light to decide
     between refraction and reflection at each intersection on a transmissive material. Direct lighting for transmissive materials is
-    handled using either the GGX BTDF or GGX BRDF at each boundary depending on if the ray refracts or reflects. In both cases we generate a sample and test to see if it hits any
+    handled using either the ideal refraction BTDF or GGX BRDF at each boundary depending on if the ray refracts or reflects. In both cases we generate a sample and test to see if it hits any
     of the lights within the scene. If the sample intersects with the light and is not occuluded, we use the respective BTDF or BRDF
     in order to add radiance due to direct lighting. 
   </p>
@@ -59,17 +59,17 @@
   <img src="btdf_mis.PNG" alt="MIS BTDF">
   <img src="brdf_mis.png" alt="MIS BRDF">
   
-   <h5> <strong>Implementing Volumetric Rendering</strong></h5>
-   <p> The second step to implementing our BSDF was to implement the aspects of volumetric rendering outlined in the SIGGRAPH course
-    paper. We define absorption and scattering coefficients in our tester file and sum those together in order to get our extinction
-     coefficient. This extinction coefficient is used to calculate transmittance, representing the overall loss of radiance, as we 
-     travel through the medium. Transmittance is multiplied into our throughput at each intersection with free distance t being
-     passed in as a parameter. Rather than estimating all contributions due to scattering and emission at each point while stepping 
-     through a medium, we use Russian Roulette in order to choose which event to sample. The material's emission values are defined in
-     the tester file and we return this value when encountering an emission event. In the case of a scattering event, we use an isotropic
-     phase function in order to sample the uniform sphere and generate a random direction to scatter in. This scattering event represents
-     the in-scattering property as the out-scattering property has been dealt with in transmittance. With these features, we have
-     implemented all four aspects of volumetric rendering (absorption, emission, in-scattering, out-scattering).
+   <h4> <strong>Implementing Volumetric Rendering</strong></h5>
+   <p> The second step to implementing our BSDF was to implement a closed-path tracking solution to the volume rendering equation
+     with reference from <em>Production Volume Rendering SIGGRAPH 2017 Course</em>. We limit our implementation to homogeneous
+     volumes, allowing us to use a normalized version of the Beer-Lambert law as a free-flight estimator.
+     At each intersection we apply a Russian Roulette based approach where we probabilistically sample
+     between an emission event and an in-scattering based event. To deal with out-scattering and 
+     absorption, we reduced the throughput using the Beer-Lambert Law and the distance traveled between subsequent collision events.
+     For in-scattering, we used the Henyey-Greenstein phase function to modulate the distribution of likely incident
+     light directions. As the phase function is also defined as a probability distribution, we can assume perfect importance
+     sampling (the phase function output with respect to the angle between the incident and outgoing radiance directions is equal to
+     its respective probability density function). Example scenes are given below.
   </p>
 </div>
   
@@ -85,5 +85,11 @@
   <img src="btdf_implementation_attenuation.PNG" alt="BTDF Attenuation">
 </div>
 
+<div>
+<h5><strong>Discussion</strong></h5>
+<p>
+  TODO
+</p>
+</div>
 </body>
 </html>
