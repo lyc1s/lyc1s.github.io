@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<body>
+
+<div style="padding-top:20px;padding-bottom:20px">
+  <h1 style="text-align: center">CSE 291 Final Project</h1>
+  <img src="boxVol.png" alt="Hero image">
+</div>
+
+<div>
+  <h4 style="text-align: center"> <strong>Smooth Particle Hydrodynamics Simulation</strong></h4>
+  <p> This is an implementation of an incompressible fluid dynamics simulation
+    using the smoothed particle hydrodynamics (SPH) method. The basic approach is
+    taken from the SPH Fluids in Computer Graphics paper written in 2014 by Ihmsen et al.
+    I use this paper to calculate pressure and viscosity forces as well as handle
+    boundary interactions. For the surface tension and Marching Cubes features
+    of the simulation, I followed the approaches outlined in Versatile Surface
+    Tension and Adhesion for SPH Fluids by Akinci et al. and Marching Cubes:
+    A High Resolution 3D Surface Construction Algorithm by Lorenson and Cline.
+    </p>
+
+  <h4> <strong>Implementing Boundary and Pressure Forces</strong></h4>
+  <p> The first part of the simulation I implemented were the gravity and
+      boundary forces. Once I was able to tune the boundary forces so that the
+      particles did not fall out of the box, I slowly increased the pressure force
+      until the particles were incompressible and did not slip through each other.
+  </p>
+  <img src="normalWithGravity.gif" alt="Gravity and Boundary Effects with Pressure">
+
+  <h4> <strong>Viscosity</strong></h4>
+  <p> The next part of the simulation I implemented was the viscosity force.
+      Here is a demonstration of a wave effect with one having much higher
+      viscosity.
+  </p>
+  <img src="waveEffect.gif" alt="Wave Effect with Normal Viscosity">
+  <img src="waveEffectHighViscosity.gif" alt="Wave Effect with High Viscosity">
+
+
+  <h4> <strong>Surface Tension</strong></h4>
+  <p> In order to implement the surface tension I had to balance the pressure
+      and viscosity forces so that they were about equal in strength to the
+      surface tension force. I found that it was hard to reach this equilibrium
+      as often times the surface tension force would be strong and cause the
+      particles to compress too much and slip between each other. If the
+      surface tension force was too weak then the pressure force would dominate
+      and the particles would just fly away from each other without forming a
+      sphere.
+  </p>
+  <img src="surfaceTensionNoGravity.gif" alt="Surface Tension with No Gravity">
+  <img src="surfaceTensionWithGravity.gif" alt="Surface Tension with Gravity">
+
+  <h4> <strong>Marching Cubes</strong></h4>
+  <p> The Marching Cubes implementation was fairly straightforward. The following
+    is a demo of the technique with a surface level value of 0.15. The video is sped
+    up as the original simulation speed is very slow due to the limited performance
+    of my computer at the time.
+  </p>
+  <img src="marchingCubes.gif" alt="Marching Cubes">
+  <img src="marchingCubesGrid.png" alt="Marching Cubes Grid">
+</div>
+
+
+<div>
+<h4><strong>Discussion</strong></h4>
+<p>
+  I was able to implement the features of the SPH paper (viscosity, pressure,
+  boundaries) without much difficulty. However, I ran into many issues when
+  implementing the surface tension feature. The surface tension works for the
+  simulation but only at very particular values for stiffness constants and
+  surface tension coefficients. If I were to expand on this project, I would like
+  to investigate further into making the surface tension feature more robust.
+  In order to do this I believe I would need to ensure greater physical accuracy
+  in terms of units and measurements as the units for the current simulation are
+  not entirely realistic and based off performance. For the Marching Cubes feature,
+  I would also like to try running the simulation on a computer with better
+  performance so I can use more cubes and render the particles on a finer grid.
+</p>
+
+</div>
+
+<div>
+<h4><strong>Source Citations</strong></h4>
+<p>
+  Akinci, Nadir, Gizem Akinci, and Matthias Teschner. "Versatile surface tension and adhesion for SPH fluids." ACM Transactions on Graphics (TOG) 32.6 (2013): 1-8.
+</p>
+<p>
+  Ihmsen, Markus, et al. "SPH fluids in computer graphics." (2014).
+</p>
+<p>
+  Lorensen, William E., and Harvey E. Cline. "Marching cubes: A high resolution 3D surface construction algorithm." ACM siggraph computer graphics 21.4 (1987): 163-169.
+</p>
+</div>
+
+</body>
+</html>
